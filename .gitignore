@@ -25,3 +25,6 @@ dist-ssr
 
 #txt
 notes.txt
+
+#env
+.env

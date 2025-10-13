@@ -1,20 +1,32 @@
 import {
+  Alert,
   Box,
   Button,
   Stack,
   TextField,
   Typography,
   useTheme,
+  Snackbar,
 } from "@mui/material";
 import Logo from "@/assets/Images/Logo.png";
 import LoginIcon from "@mui/icons-material/Login";
 import { useFormik } from "formik";
 import { loginValidationSchema } from "@/validation/LoginValidation";
 import type { LoginFormValues } from "@/types/formTypes";
+import { login } from "@/services/authService";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Login = () => {
   const theme = useTheme();
   const { primary, secondary, background, text } = theme.palette;
+  const navigate = useNavigate();
+
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "error" as "error" | "success" | "info" | "warning",
+  });
 
   // Formik
   const formik = useFormik<LoginFormValues>({
@@ -23,8 +35,42 @@ const Login = () => {
       password: "",
     },
     validationSchema: loginValidationSchema,
-    onSubmit: (values) => {
-      console.log("Login values:", values);
+    onSubmit: async (values, { setSubmitting }) => {
+      try {
+        console.log("Login values:", values);
+        const data = {
+          userName: values.email,
+          password: values.password,
+        };
+
+        const response = await login(data);
+
+        localStorage.setItem("token", response.token);
+        localStorage.setItem("userType", response.userType);
+
+        setSnackbar({
+          open: true,
+          message: "Login successful!",
+          severity: "success",
+        });
+
+        setTimeout(() => {
+          if (response.userType === "Admin") {
+            navigate("/admin");
+          } else {
+            navigate("/user");
+          }
+        }, 5000);
+      } catch (error: any) {
+        console.error("Login failed:", error.response?.data || error.message);
+        setSnackbar({
+          open: true,
+          message: error.response?.data?.message || "Invalid credentials",
+          severity: "error",
+        });
+      } finally {
+        setSubmitting(false);
+      }
     },
   });
 
@@ -85,7 +131,6 @@ const Login = () => {
               placeholder="you@gmail.com"
               id="name"
               name="email"
-              type="email"
               label="Email"
               value={formik.values.email}
               onChange={formik.handleChange}
@@ -129,6 +174,30 @@ const Login = () => {
           </Stack>
         </form>
       </Stack>
+
+      {/* Snackbar */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={2000}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert
+          severity={snackbar.severity}
+          onClose={() => setSnackbar({ ...snackbar, open: false })}
+          // sx={{ width: "100%" }}
+          sx={{
+            width: "100%",
+            fontWeight: "bold",
+            fontSize: "1rem",
+            display: "flex",
+            alignItems: "center",
+            color: "text.primary",
+          }}
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };
