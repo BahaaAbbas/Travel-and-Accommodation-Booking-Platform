@@ -5,8 +5,8 @@ const App = () => {
   return (
     <>
       <div>
-        <ThemeTesting />
-        <Link to="/"> Home</Link> | <Link to="/login"> Login</Link>
+        {/* <ThemeTesting /> */}
+        {/* <Link to="/"> Home</Link> | <Link to="/login"> Login</Link> */}
         <Outlet />
       </div>
     </>

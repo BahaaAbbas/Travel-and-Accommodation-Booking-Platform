@@ -5,7 +5,7 @@ import Logo from "@/assets/Images/Logo.png";
 const NotFound = () => {
   const navigate = useNavigate();
   const theme = useTheme();
-  const { background, text, error } = theme.palette;
+  const { background, text, primary } = theme.palette;
 
   return (
     <Box
@@ -35,11 +35,11 @@ const NotFound = () => {
           sx={{ width: 150, height: 150, mb: 1 }}
         />
 
-        <Typography variant="h1" fontWeight="bold" sx={{ color: error.main }}>
+        <Typography variant="h1" fontWeight="bold" sx={{ color: primary.main }}>
           404
         </Typography>
 
-        <Typography variant="h5" color={error.main} fontWeight="bold">
+        <Typography variant="h5" color={text.primary} fontWeight="bold">
           Page Not Found
         </Typography>
 
