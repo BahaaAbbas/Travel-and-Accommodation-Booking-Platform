@@ -31,10 +31,17 @@ interface Props {
 }
 
 export const ThemeProvider = ({ children }: Props) => {
-  const [mode, setMode] = useState<mode>("light");
+  const [mode, setMode] = useState<mode>(() => {
+    const theme = localStorage.getItem("theme") as mode | null;
+    return theme ?? "light";
+  });
 
   const toggleTheme = () => {
-    setMode((prev) => (prev === "light" ? "dark" : "light"));
+    setMode((prev) => {
+      const newMode = prev === "light" ? "dark" : "light";
+      localStorage.setItem("theme", newMode);
+      return newMode;
+    });
   };
 
   const theme = useMemo(() => getTheme(mode), [mode]);
