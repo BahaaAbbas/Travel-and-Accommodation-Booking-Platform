@@ -1,5 +1,5 @@
 export interface LoginResponse {
-  token: string;
+  authentication: string;
   userType: "Admin" | "User";
 }
 

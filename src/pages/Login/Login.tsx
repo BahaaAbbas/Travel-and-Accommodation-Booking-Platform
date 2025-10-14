@@ -7,7 +7,9 @@ import {
   Typography,
   useTheme,
   Snackbar,
+  IconButton,
 } from "@mui/material";
+import { Brightness4, Brightness7 } from "@mui/icons-material";
 import Logo from "@/assets/Images/Logo.png";
 import LoginIcon from "@mui/icons-material/Login";
 import { useFormik } from "formik";
@@ -15,12 +17,21 @@ import { loginValidationSchema } from "@/validation/LoginValidation";
 import type { LoginFormValues } from "@/types/formTypes";
 import { login } from "@/services/authService";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useThemeContext } from "@/context/ThemeContext";
+import { useAppDispatch } from "@/featuers/auth/hooks";
+import { logout, setCredentials } from "@/featuers/auth/authSlice";
 
 const Login = () => {
   const theme = useTheme();
   const { primary, secondary, background, text } = theme.palette;
   const navigate = useNavigate();
+  const { toggleTheme } = useThemeContext();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(logout());
+  }, [dispatch]);
 
   const [snackbar, setSnackbar] = useState({
     open: false,
@@ -31,7 +42,7 @@ const Login = () => {
   // Formik
   const formik = useFormik<LoginFormValues>({
     initialValues: {
-      email: "",
+      username: "",
       password: "",
     },
     validationSchema: loginValidationSchema,
@@ -39,14 +50,16 @@ const Login = () => {
       try {
         console.log("Login values:", values);
         const data = {
-          userName: values.email,
+          userName: values.username,
           password: values.password,
         };
 
         const response = await login(data);
+        console.log("Login response:", response);
 
-        localStorage.setItem("token", response.token);
-        localStorage.setItem("userType", response.userType);
+        // localStorage.setItem("token", response.token);
+        // localStorage.setItem("userType", response.userType);
+        dispatch(setCredentials(response));
 
         setSnackbar({
           open: true,
@@ -58,14 +71,14 @@ const Login = () => {
           if (response.userType === "Admin") {
             navigate("/admin");
           } else {
-            navigate("/user");
+            navigate("/home");
           }
-        }, 5000);
+        }, 2000);
       } catch (error: any) {
         console.error("Login failed:", error.response?.data || error.message);
         setSnackbar({
           open: true,
-          message: error.response?.data?.message || "Invalid credentials",
+          message: error.response?.data?.message || "Something Went Wrong!",
           severity: "error",
         });
       } finally {
@@ -83,8 +96,23 @@ const Login = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        position: "relative",
       }}
     >
+      <IconButton
+        onClick={toggleTheme}
+        sx={{
+          position: "absolute",
+          top: 16,
+          right: 16,
+          color: text.primary,
+          "&:hover": {
+            backgroundColor: `${primary.main}20`,
+          },
+        }}
+      >
+        {theme.palette.mode === "dark" ? <Brightness7 /> : <Brightness4 />}
+      </IconButton>
       <Stack
         spacing={3}
         sx={{
@@ -129,14 +157,14 @@ const Login = () => {
               variant="outlined"
               fullWidth
               placeholder="you@gmail.com"
-              id="name"
-              name="email"
-              label="Email"
-              value={formik.values.email}
+              id="username"
+              name="username"
+              label="Name"
+              value={formik.values.username}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              helperText={formik.touched.email && formik.errors.email}
+              error={formik.touched.username && Boolean(formik.errors.username)}
+              helperText={formik.touched.username && formik.errors.username}
             />
             <TextField
               fullWidth
