@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useAppSelector } from "@/featuers/auth/hooks";
-import { selectAuth } from "@/featuers/auth/authSlectors";
+import { useAppSelector } from "@/features/auth/hooks";
+import { selectAuth } from "@/features/auth/authSlectors";
 
 interface ProtectedRouteProps {
   allowedRoles: string[];

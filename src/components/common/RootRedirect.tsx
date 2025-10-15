@@ -1,5 +1,5 @@
-import { selectAuth } from "@/featuers/auth/authSlectors";
-import { useAppSelector } from "@/featuers/auth/hooks";
+import { selectAuth } from "@/features/auth/authSlectors";
+import { useAppSelector } from "@/features/auth/hooks";
 import { jwtDecode } from "jwt-decode";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";

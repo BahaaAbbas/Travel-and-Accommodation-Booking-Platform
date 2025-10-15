@@ -19,8 +19,8 @@ import { login } from "@/services/authService";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useThemeContext } from "@/context/ThemeContext";
-import { useAppDispatch } from "@/featuers/auth/hooks";
-import { logout, setCredentials } from "@/featuers/auth/authSlice";
+import { useAppDispatch } from "@/features/auth/hooks";
+import { logout, setCredentials } from "@/features/auth/authSlice";
 
 const Login = () => {
   const theme = useTheme();
@@ -73,7 +73,7 @@ const Login = () => {
           } else {
             navigate("/home");
           }
-        }, 2000);
+        }, 500);
       } catch (error: any) {
         console.error("Login failed:", error.response?.data || error.message);
         setSnackbar({

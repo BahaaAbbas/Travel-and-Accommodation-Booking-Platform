@@ -3,6 +3,7 @@ import NotFound from "@/pages/NotFound";
 import Login from "@/pages/Login";
 import ProtectedRoute from "@/components/common/ProtectedRoute";
 import RootRedirect from "@/components/common/RootRedirect";
+import UnAuthorized from "@/pages/UnAuthorized";
 
 const router = createBrowserRouter([
   {
@@ -11,6 +12,7 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
   },
   { path: "login", element: <Login /> },
+  { path: "unauthorized", element: <UnAuthorized /> },
   {
     element: <ProtectedRoute allowedRoles={["Admin", "User"]} />,
     children: [
