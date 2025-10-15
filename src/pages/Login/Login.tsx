@@ -1,30 +1,89 @@
 import {
+  Alert,
   Box,
   Button,
   Stack,
   TextField,
   Typography,
   useTheme,
+  Snackbar,
+  IconButton,
 } from "@mui/material";
+import { Brightness4, Brightness7 } from "@mui/icons-material";
 import Logo from "@/assets/Images/Logo.png";
 import LoginIcon from "@mui/icons-material/Login";
 import { useFormik } from "formik";
 import { loginValidationSchema } from "@/validation/LoginValidation";
 import type { LoginFormValues } from "@/types/formTypes";
+import { login } from "@/services/authService";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useThemeContext } from "@/context/ThemeContext";
+import { useAppDispatch } from "@/features/auth/hooks";
+import { logout, setCredentials } from "@/features/auth/authSlice";
 
 const Login = () => {
   const theme = useTheme();
   const { primary, secondary, background, text } = theme.palette;
+  const navigate = useNavigate();
+  const { toggleTheme } = useThemeContext();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(logout());
+  }, [dispatch]);
+
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "error" as "error" | "success" | "info" | "warning",
+  });
 
   // Formik
   const formik = useFormik<LoginFormValues>({
     initialValues: {
-      email: "",
+      username: "",
       password: "",
     },
     validationSchema: loginValidationSchema,
-    onSubmit: (values) => {
-      console.log("Login values:", values);
+    onSubmit: async (values, { setSubmitting }) => {
+      try {
+        console.log("Login values:", values);
+        const data = {
+          userName: values.username,
+          password: values.password,
+        };
+
+        const response = await login(data);
+        console.log("Login response:", response);
+
+        // localStorage.setItem("token", response.token);
+        // localStorage.setItem("userType", response.userType);
+        dispatch(setCredentials(response));
+
+        setSnackbar({
+          open: true,
+          message: "Login successful!",
+          severity: "success",
+        });
+
+        setTimeout(() => {
+          if (response.userType === "Admin") {
+            navigate("/admin");
+          } else {
+            navigate("/home");
+          }
+        }, 500);
+      } catch (error: any) {
+        console.error("Login failed:", error.response?.data || error.message);
+        setSnackbar({
+          open: true,
+          message: error.response?.data?.message || "Something Went Wrong!",
+          severity: "error",
+        });
+      } finally {
+        setSubmitting(false);
+      }
     },
   });
 
@@ -37,8 +96,23 @@ const Login = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        position: "relative",
       }}
     >
+      <IconButton
+        onClick={toggleTheme}
+        sx={{
+          position: "absolute",
+          top: 16,
+          right: 16,
+          color: text.primary,
+          "&:hover": {
+            backgroundColor: `${primary.main}20`,
+          },
+        }}
+      >
+        {theme.palette.mode === "dark" ? <Brightness7 /> : <Brightness4 />}
+      </IconButton>
       <Stack
         spacing={3}
         sx={{
@@ -83,15 +157,14 @@ const Login = () => {
               variant="outlined"
               fullWidth
               placeholder="you@gmail.com"
-              id="name"
-              name="email"
-              type="email"
-              label="Email"
-              value={formik.values.email}
+              id="username"
+              name="username"
+              label="Name"
+              value={formik.values.username}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              helperText={formik.touched.email && formik.errors.email}
+              error={formik.touched.username && Boolean(formik.errors.username)}
+              helperText={formik.touched.username && formik.errors.username}
             />
             <TextField
               fullWidth
@@ -129,6 +202,30 @@ const Login = () => {
           </Stack>
         </form>
       </Stack>
+
+      {/* Snackbar */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={2000}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert
+          severity={snackbar.severity}
+          onClose={() => setSnackbar({ ...snackbar, open: false })}
+          // sx={{ width: "100%" }}
+          sx={{
+            width: "100%",
+            fontWeight: "bold",
+            fontSize: "1rem",
+            display: "flex",
+            alignItems: "center",
+            color: "text.primary",
+          }}
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };

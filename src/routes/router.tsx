@@ -1,17 +1,34 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
-import Login from "@/pages/Login";
 import NotFound from "@/pages/NotFound";
+import Login from "@/pages/Login";
+import ProtectedRoute from "@/components/common/ProtectedRoute";
+import RootRedirect from "@/components/common/RootRedirect";
+import UnAuthorized from "@/pages/UnAuthorized";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <RootRedirect />,
     errorElement: <NotFound />,
+  },
+  { path: "login", element: <Login /> },
+  { path: "unauthorized", element: <UnAuthorized /> },
+  {
+    element: <ProtectedRoute allowedRoles={["Admin", "User"]} />,
     children: [
       {
-        path: "login",
-        element: <Login />,
+        path: "home",
+        element: <div>home</div>,
+      },
+    ],
+  },
+
+  {
+    element: <ProtectedRoute allowedRoles={["Admin"]} />,
+    children: [
+      {
+        path: "admin",
+        element: <div>admin</div>,
       },
     ],
   },
