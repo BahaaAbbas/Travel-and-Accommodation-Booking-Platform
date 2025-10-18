@@ -1,10 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useAppSelector } from "@/features/auth/hooks";
 import { selectAuth } from "@/features/auth/authSlectors";
-
-interface ProtectedRouteProps {
-  allowedRoles: string[];
-}
+import type { ProtectedRouteProps } from "@/types/commonTypes";
 
 const ProtectedRoute = ({ allowedRoles }: ProtectedRouteProps) => {
   const { token, userType } = useAppSelector(selectAuth);

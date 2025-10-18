@@ -4,6 +4,9 @@ import Login from "@/pages/Login";
 import ProtectedRoute from "@/components/common/ProtectedRoute";
 import RootRedirect from "@/components/common/RootRedirect";
 import UnAuthorized from "@/pages/UnAuthorized";
+import Home from "@/pages/Home";
+import DashboardLayout from "@/layouts/DashboardLayout";
+import BookingForm from "@/components/ThemeTesting/Test";
 
 const router = createBrowserRouter([
   {
@@ -14,11 +17,23 @@ const router = createBrowserRouter([
   { path: "login", element: <Login /> },
   { path: "unauthorized", element: <UnAuthorized /> },
   {
+    element: <DashboardLayout />,
+    children: [
+      { path: "test", element: <Home /> },
+      { path: "test1", element: <BookingForm /> },
+    ],
+  },
+
+  {
     element: <ProtectedRoute allowedRoles={["Admin", "User"]} />,
     children: [
       {
-        path: "home",
-        element: <div>home</div>,
+        element: <DashboardLayout />,
+        children: [
+          { path: "home", element: <Home /> },
+          { path: "profile", element: <div>Profile Page</div> },
+          { path: "settings", element: <div>Settings Page</div> },
+        ],
       },
     ],
   },
@@ -27,8 +42,8 @@ const router = createBrowserRouter([
     element: <ProtectedRoute allowedRoles={["Admin"]} />,
     children: [
       {
-        path: "admin",
-        element: <div>admin</div>,
+        element: <DashboardLayout />,
+        children: [{ path: "admin", element: <div>Admin Panel</div> }],
       },
     ],
   },

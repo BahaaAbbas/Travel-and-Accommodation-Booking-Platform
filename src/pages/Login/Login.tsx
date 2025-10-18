@@ -24,7 +24,7 @@ import { logout, setCredentials } from "@/features/auth/authSlice";
 
 const Login = () => {
   const theme = useTheme();
-  const { primary, secondary, background, text } = theme.palette;
+  const { primary, background, text, accent, success } = theme.palette;
   const navigate = useNavigate();
   const { toggleTheme } = useThemeContext();
   const dispatch = useAppDispatch();
@@ -114,7 +114,7 @@ const Login = () => {
         {theme.palette.mode === "dark" ? <Brightness7 /> : <Brightness4 />}
       </IconButton>
       <Stack
-        spacing={3}
+        spacing={2}
         sx={{
           maxWidth: 400,
           width: "100%",
@@ -138,14 +138,18 @@ const Login = () => {
         />
 
         {/* Heading */}
-        <Typography variant="h4" fontWeight="bold">
-          <Box component="span" sx={{ color: primary.main }}>
-            Welcome
-          </Box>{" "}
-          <Box component="span" sx={{ color: secondary.main }}>
-            Back
-          </Box>
+        <Typography
+          variant="h4"
+          fontWeight="bold"
+          sx={{
+            background: `linear-gradient(90deg, ${success.main}, ${primary.main})`,
+            backgroundClip: "text",
+            color: "transparent",
+          }}
+        >
+          Welcome Back
         </Typography>
+
         <Typography color={text.secondary}>
           Sign in to your TravelBook account
         </Typography>
@@ -190,10 +194,10 @@ const Login = () => {
                 py: 1.5,
                 fontWeight: "bold",
                 textTransform: "none",
-                background: `linear-gradient(90deg, ${primary.main}, ${secondary.main})`,
+                background: `linear-gradient(90deg, ${primary.main}, ${accent.main})`,
                 color: "text.primary",
                 "&:hover": {
-                  background: `linear-gradient(90deg, ${secondary.main}, ${primary.main})`,
+                  background: `linear-gradient(90deg, ${success.main}, ${primary.main})`,
                 },
               }}
             >

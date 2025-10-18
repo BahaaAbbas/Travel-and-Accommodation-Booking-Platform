@@ -1,7 +1,6 @@
 import { http, HttpResponse } from "msw";
 
 export const handlers = [
-  // Mock POST /auth/authenticate
   http.post("*/auth/authenticate", async ({ request }) => {
     const body = (await request.json()) as {
       userName: string;

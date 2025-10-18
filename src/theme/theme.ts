@@ -1,45 +1,85 @@
+import { type PaletteColorOptions } from "@mui/material/styles";
 import { createTheme } from "@mui/material";
-import { darkColors, lightColors } from "./color.ts";
+import { lightColors, darkColors } from "./color";
 
-type mode = "light" | "dark";
+type Mode = "light" | "dark";
 
-export const getTheme = (mode: mode) =>
-  createTheme({
+export const getTheme = (mode: Mode) => {
+  const colors = mode === "light" ? lightColors : darkColors;
+
+  return createTheme({
     palette: {
       mode,
-      primary: {
-        main: mode === "light" ? lightColors.primary : darkColors.primary,
-      },
-      secondary: {
-        main: mode === "light" ? lightColors.secondary : darkColors.secondary,
-      },
+      primary: { main: colors.primary },
+      secondary: { main: colors.secondary },
+      success: { main: colors.success },
+      error: { main: colors.destructive },
       background: {
-        default:
-          mode === "light" ? lightColors.background : darkColors.background,
-        paper: mode === "light" ? lightColors.surface : darkColors.surface,
+        default: colors.background,
+        paper: colors.surface,
       },
       text: {
-        primary:
-          mode === "light" ? lightColors.textPrimary : darkColors.textPrimary,
-        secondary:
-          mode === "light"
-            ? lightColors.textSecondary
-            : darkColors.textSecondary,
+        primary: colors.textPrimary,
+        secondary: colors.textSecondary,
       },
-      error: {
-        main: mode === "light" ? lightColors.error : darkColors.error,
-      },
+      divider: colors.border,
+      accent: { main: colors.accent },
+      foreground: { main: colors.foreground },
+      border: { main: colors.border },
+    },
+
+    shape: {
+      borderRadius: 12,
     },
     typography: {
-      fontFamily: "Roboto, Arial, sans-serif",
+      fontFamily: "Inter, Roboto, Arial, sans-serif",
+      allVariants: {
+        color: colors.textPrimary,
+      },
     },
     components: {
       MuiButton: {
         styleOverrides: {
           root: {
-            borderRadius: 12,
+            borderRadius: 8,
+            textTransform: "none",
+            fontWeight: 500,
+            "&:hover": {
+              boxShadow: `0 2px 8px ${
+                mode === "light"
+                  ? "hsl(210, 20%, 80% / 0.3)"
+                  : "hsl(0, 0%, 0% / 0.4)"
+              }`,
+            },
+          },
+        },
+      },
+      MuiPaper: {
+        styleOverrides: {
+          root: {
+            backgroundImage: "none",
           },
         },
       },
     },
   });
+};
+
+declare module "@mui/material/styles" {
+  interface Palette {
+    accent: Palette["primary"];
+    foreground: Palette["primary"];
+    border: Palette["primary"];
+  }
+  interface PaletteOptions {
+    accent?: PaletteColorOptions;
+    foreground?: PaletteColorOptions;
+    border?: PaletteColorOptions;
+  }
+}
+
+declare module "@mui/material/Button" {
+  interface ButtonPropsColorOverrides {
+    accent: true;
+  }
+}
