@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useAppSelector } from "@/features/auth/hooks";
+import { useAppSelector } from "@/features/hooks";
 import { selectAuth } from "@/features/auth/authSlectors";
 import type { ProtectedRouteProps } from "@/types/commonTypes";
 

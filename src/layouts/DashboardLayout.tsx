@@ -1,15 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import { Outlet } from "react-router-dom";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
+import {
+  toggleSidebar,
+  setSidebarOpen,
+  toggleSidebarCollapse,
+} from "@/features/layout/layoutSlice";
+import { selectLayout } from "@/features/layout/layoutSelectors";
+import { useAppDispatch, useAppSelector } from "@/features/hooks";
 
 const DashboardLayout: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const dispatch = useAppDispatch();
+  const { sidebarOpen, sidebarCollapsed } = useAppSelector(selectLayout);
   const sidebarWidth = sidebarCollapsed ? 60 : 220;
 
   return (
@@ -22,7 +29,7 @@ const DashboardLayout: React.FC = () => {
     >
       {isMobile && !sidebarOpen && (
         <Header
-          onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
+          onToggleSidebar={() => dispatch(toggleSidebar())}
           isSidebarOpen={sidebarOpen}
         />
       )}
@@ -44,12 +51,12 @@ const DashboardLayout: React.FC = () => {
           >
             <Sidebar
               collapsed={sidebarCollapsed}
-              onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
+              onToggleCollapse={() => dispatch(toggleSidebarCollapse())}
             />
           </Box>
 
           <Box
-            onClick={() => setSidebarOpen(false)}
+            onClick={() => dispatch(setSidebarOpen(false))}
             sx={{
               position: "fixed",
               top: 0,
@@ -79,7 +86,7 @@ const DashboardLayout: React.FC = () => {
         >
           <Sidebar
             collapsed={sidebarCollapsed}
-            onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
+            onToggleCollapse={() => dispatch(toggleSidebarCollapse())}
           />
         </Box>
       )}

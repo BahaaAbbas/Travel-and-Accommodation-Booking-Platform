@@ -7,7 +7,7 @@ import {
   useTheme,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import AppButton from "../Buttons";
+import AppButton from "../Buttons/AppButton";
 import CheckSH from "../CheckSearchHome/CheckSH";
 
 const HomeSearch = () => {

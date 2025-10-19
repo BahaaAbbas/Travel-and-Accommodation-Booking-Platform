@@ -1,6 +1,6 @@
 import { Box, Grid, Typography, useTheme } from "@mui/material";
 import { useFeaturedDeals } from "@/hooks/useHomeQueries";
-import HotelCard from "../Cards/HotelCard";
+import HotelCard from "@/components/Cards/hotelCard/HotelCard";
 import type { FeaturedDealResponse, Hotel } from "@/types/homeTypes";
 
 const FeaturedDeals = () => {

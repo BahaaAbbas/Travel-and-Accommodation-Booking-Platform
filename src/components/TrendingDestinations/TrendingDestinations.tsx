@@ -1,7 +1,7 @@
 import { Box, Grid, Typography, useTheme } from "@mui/material";
 
-import TrendingCard from "../Cards/TrendingCard";
 import { useTrendingDestinations } from "@/hooks/useHomeQueries";
+import TrendingCard from "@/components/Cards/trendingCard/TrendingCard";
 
 const TrendingDestinations = () => {
   const theme = useTheme();

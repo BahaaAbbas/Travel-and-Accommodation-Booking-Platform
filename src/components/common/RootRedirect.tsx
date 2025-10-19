@@ -1,5 +1,5 @@
 import { selectAuth } from "@/features/auth/authSlectors";
-import { useAppSelector } from "@/features/auth/hooks";
+import { useAppSelector } from "@/features/hooks";
 import type { JwtPayload } from "@/types/commonTypes";
 import { jwtDecode } from "jwt-decode";
 import { useEffect } from "react";

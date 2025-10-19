@@ -19,7 +19,7 @@ import { login } from "@/services/authService";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useThemeContext } from "@/context/ThemeContext";
-import { useAppDispatch } from "@/features/auth/hooks";
+import { useAppDispatch } from "@/features/hooks";
 import { logout, setCredentials } from "@/features/auth/authSlice";
 
 const Login = () => {

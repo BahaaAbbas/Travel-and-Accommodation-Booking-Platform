@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import type { HotelCardProps } from "@/types/homeTypes";
-import AppButton from "../Buttons";
+import AppButton from "@/components/Buttons/AppButton";
 
 const HotelCard: React.FC<HotelCardProps> = ({ hotel, onViewDetails }) => {
   const theme = useTheme();
