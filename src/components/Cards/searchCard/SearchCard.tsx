@@ -10,13 +10,12 @@ import {
   useTheme,
 } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import type { HotelCardProps } from "@/types/homeTypes";
 import AppButton from "@/components/Buttons/AppButton";
-import { useNavigate } from "react-router-dom";
+import type { SearchCardProps } from "@/types/search";
 
-const HotelCard: React.FC<HotelCardProps> = ({ hotel, onViewDetails }) => {
+const SearchCard: React.FC<SearchCardProps> = ({ hotel, onViewDetails }) => {
   const theme = useTheme();
-  const navigate = useNavigate();
+
   return (
     <Card
       sx={{
@@ -25,14 +24,15 @@ const HotelCard: React.FC<HotelCardProps> = ({ hotel, onViewDetails }) => {
         overflow: "hidden",
         height: "100%",
         backgroundColor: theme.palette.background.paper,
-        boxShadow: theme.shadows[4],
-        transition: "transform 0.2s ease, box-shadow 0.2s ease",
+        boxShadow: theme.shadows[6],
+        transition: "transform 0.25s ease, box-shadow 0.25s ease",
         "&:hover": {
-          transform: "translateY(-4px)",
-          boxShadow: theme.shadows[8],
+          transform: "translateY(-6px)",
+          boxShadow: theme.shadows[12],
         },
       }}
     >
+      {/* Discount Badge */}
       {hotel.discount && (
         <Chip
           label={`-${hotel.discount}%`}
@@ -43,18 +43,23 @@ const HotelCard: React.FC<HotelCardProps> = ({ hotel, onViewDetails }) => {
             top: 12,
             right: 12,
             fontWeight: 600,
+            borderRadius: "12px",
           }}
         />
       )}
 
+      {/* Hotel Image */}
       <CardMedia
         component="img"
         height="200"
-        image={hotel.image}
-        alt={hotel.name}
-        sx={{ objectFit: "cover" }}
+        image={hotel.roomPhotoUrl}
+        alt={hotel.hotelName}
+        sx={{
+          objectFit: "cover",
+        }}
       />
 
+      {/* Content */}
       <CardContent sx={{ p: 2.5 }}>
         <Typography
           variant="h6"
@@ -62,7 +67,7 @@ const HotelCard: React.FC<HotelCardProps> = ({ hotel, onViewDetails }) => {
           gutterBottom
           color={theme.palette.text.primary}
         >
-          {hotel.name}
+          {hotel.hotelName}
         </Typography>
 
         <Box display="flex" alignItems="center" mb={1}>
@@ -73,21 +78,60 @@ const HotelCard: React.FC<HotelCardProps> = ({ hotel, onViewDetails }) => {
             fontWeight={600}
             noWrap
           >
-            {hotel.location}
+            {hotel.cityName}
           </Typography>
         </Box>
 
+        {/* Rating */}
         <Box display="flex" alignItems="center" mb={1}>
-          <Rating value={hotel.rating} readOnly precision={0.5} size="small" />
+          <Rating
+            value={hotel.starRating}
+            readOnly
+            precision={0.5}
+            size="small"
+          />
           <Typography variant="body2" ml={0.5} color="text.secondary">
-            ({hotel.rating})
+            ({hotel.starRating})
           </Typography>
         </Box>
 
-        <Typography variant="body2" color="text.secondary">
-          {hotel.description}
-        </Typography>
+        {/* Room Type */}
+        {hotel.roomType && (
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            fontWeight={500}
+            sx={{ mb: 1 }}
+          >
+            {hotel.roomType}
+          </Typography>
+        )}
 
+        {/* Amenities */}
+        {hotel.amenities && (
+          <Box display="flex" gap={1} flexWrap="wrap" mb={2}>
+            {hotel.amenities.map((amenity, index) => (
+              <Chip
+                key={index}
+                label={amenity}
+                size="small"
+                sx={{
+                  fontWeight: 500,
+                  backgroundColor:
+                    index % 2 === 0
+                      ? theme.palette.primary.main + "20"
+                      : theme.palette.accent.main,
+                  color:
+                    index % 2 === 0
+                      ? theme.palette.primary.main
+                      : theme.palette.secondary.main,
+                }}
+              />
+            ))}
+          </Box>
+        )}
+
+        {/* Price and Button */}
         <Box
           mt={2}
           display="flex"
@@ -95,7 +139,7 @@ const HotelCard: React.FC<HotelCardProps> = ({ hotel, onViewDetails }) => {
           alignItems="center"
         >
           <Typography variant="h5" fontWeight={700} color="primary">
-            ${hotel.price}
+            ${hotel.roomPrice}
             <Typography component="span" variant="body2" color="text.secondary">
               {" "}
               / night
@@ -106,7 +150,7 @@ const HotelCard: React.FC<HotelCardProps> = ({ hotel, onViewDetails }) => {
             text="View Details"
             padding="8px 16px"
             bgColor={(theme) => theme.palette.primary.main}
-            onClick={() => navigate("/hotels")}
+            onClick={() => onViewDetails?.(hotel.hotelId)}
           />
         </Box>
       </CardContent>
@@ -114,4 +158,4 @@ const HotelCard: React.FC<HotelCardProps> = ({ hotel, onViewDetails }) => {
   );
 };
 
-export default HotelCard;
+export default SearchCard;

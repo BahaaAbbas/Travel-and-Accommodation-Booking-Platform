@@ -131,7 +131,6 @@ const Login = () => {
           src={Logo}
           alt="Logo"
           sx={{
-            width: 120,
             height: 120,
             mx: "auto !important",
           }}

@@ -97,10 +97,10 @@ const DashboardLayout: React.FC = () => {
         sx={{
           flexGrow: 1,
           m: "0",
-          pt: isMobile ? "64px" : 0,
+          pt: isMobile ? "45px" : 0,
           ml: !isMobile ? `${sidebarWidth}px` : 0,
           transition: "margin-left 0.3s",
-          backgroundColor: theme.palette.primary.main,
+          bgcolor: theme.palette.primary.main,
         }}
       >
         <Outlet />

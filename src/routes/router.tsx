@@ -7,6 +7,8 @@ import UnAuthorized from "@/pages/UnAuthorized";
 import Home from "@/pages/Home";
 import DashboardLayout from "@/layouts/DashboardLayout";
 import BookingForm from "@/components/ThemeTesting/Test";
+import Search from "@/pages/Search";
+import Hotels from "@/pages/Hotels";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +33,8 @@ const router = createBrowserRouter([
         element: <DashboardLayout />,
         children: [
           { path: "home", element: <Home /> },
-          { path: "profile", element: <div>Profile Page</div> },
+          { path: "search", element: <Search /> },
+          { path: "hotels", element: <Hotels /> },
           { path: "settings", element: <div>Settings Page</div> },
         ],
       },

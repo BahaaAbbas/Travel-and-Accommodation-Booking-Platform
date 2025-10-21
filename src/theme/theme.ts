@@ -25,6 +25,7 @@ export const getTheme = (mode: Mode) => {
       divider: colors.border,
       accent: { main: colors.accent },
       foreground: { main: colors.foreground },
+      mutedForeground: { main: colors.mutedForeground },
       border: { main: colors.border },
     },
 
@@ -70,11 +71,13 @@ declare module "@mui/material/styles" {
     accent: Palette["primary"];
     foreground: Palette["primary"];
     border: Palette["primary"];
+    mutedForeground: Palette["primary"];
   }
   interface PaletteOptions {
     accent?: PaletteColorOptions;
     foreground?: PaletteColorOptions;
     border?: PaletteColorOptions;
+    mutedForeground?: PaletteColorOptions;
   }
 }
 

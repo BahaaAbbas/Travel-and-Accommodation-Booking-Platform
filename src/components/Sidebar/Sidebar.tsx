@@ -62,7 +62,6 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggleCollapse }) => {
             src={Logo}
             alt="Logo"
             sx={{
-              width: 48,
               height: 48,
               flexShrink: 0,
               transition: "all 0.3s ease",
@@ -72,7 +71,7 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggleCollapse }) => {
             variant="h6"
             fontWeight="700"
             sx={{
-              ml: collapsed ? 0 : 1,
+              ml: 0,
               fontSize: "1.2rem",
               background: "linear-gradient(90deg, #3b82f6 0%, #06b6d4 100%)",
               backgroundClip: "text",
@@ -110,6 +109,9 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggleCollapse }) => {
                   py: 0.3,
                   px: 0.3,
                   mt: 1,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
                   borderRadius: "8px",
                   fontSize: "0.95rem",
                   fontWeight: 500,
@@ -120,7 +122,6 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggleCollapse }) => {
                       mode === "dark" ? "rgba(59,130,246,0.1)" : "#f1f5f9",
                     color: mode === "dark" ? "#93c5fd" : "#1e3a8a",
                   },
-                  borderLeft: "4px solid blue",
                 }}
                 onClick={() => navigate(`${item.url}`)}
               >
