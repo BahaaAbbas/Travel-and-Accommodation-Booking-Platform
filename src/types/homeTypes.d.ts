@@ -30,7 +30,7 @@ export interface TrendingDestinationResponse {
   thumbnailUrl: string;
 }
 
-export interface Hotel {
+export interface HotelPreview {
   id: string;
   name: string;
   image: string;
@@ -42,7 +42,7 @@ export interface Hotel {
 }
 
 export interface HotelCardProps {
-  hotel: Hotel;
+  hotel: HotelPreview;
   onViewDetails?: (id: string) => void;
 }
 

@@ -23,14 +23,8 @@ import AppButton from "../Buttons/AppButton";
 
 import { useSearchQueries } from "@/hooks/useSearchQueries";
 import { useDebounce } from "@/hooks/useDebounce";
-import type { SearchParams } from "@/types/search";
+import type { SearchParams, SearchWithCheckProps } from "@/types/search";
 import CloseIcon from "@mui/icons-material/Close";
-
-interface SearchWithCheckProps {
-  searchText: string;
-  setSearchText: React.Dispatch<React.SetStateAction<string>>;
-  onSearch?: (params: SearchParams) => void;
-}
 
 const SearchWithCheck: React.FC<SearchWithCheckProps> = ({
   searchText,

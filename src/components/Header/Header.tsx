@@ -5,18 +5,22 @@ import {
   IconButton,
   Typography,
   useTheme,
+  Box,
 } from "@mui/material";
 import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useThemeContext } from "@/context/ThemeContext";
 import { alpha } from "@mui/material/styles";
 import type { HeaderProps } from "@/types/headerTypes";
+import { useNavigate } from "react-router-dom";
 
 const Header: React.FC<HeaderProps> = ({ onToggleSidebar, isSidebarOpen }) => {
   const [elevated, setElevated] = useState(false);
   const { mode, toggleTheme } = useThemeContext();
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const handleScroll = () => {
     setElevated(window.scrollY > 0);
@@ -80,6 +84,12 @@ const Header: React.FC<HeaderProps> = ({ onToggleSidebar, isSidebarOpen }) => {
         >
           TravelBook
         </Typography>
+
+        <Box sx={{ display: { xs: "block", md: "block", lg: "none" } }}>
+          <IconButton color="inherit" onClick={() => navigate("/cart")}>
+            <ShoppingCartIcon />
+          </IconButton>
+        </Box>
 
         {/* Theme toggle */}
         <IconButton

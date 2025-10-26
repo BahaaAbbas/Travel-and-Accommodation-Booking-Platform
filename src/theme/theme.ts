@@ -27,6 +27,7 @@ export const getTheme = (mode: Mode) => {
       foreground: { main: colors.foreground },
       mutedForeground: { main: colors.mutedForeground },
       border: { main: colors.border },
+      card: { main: colors.card },
     },
 
     shape: {
@@ -72,12 +73,14 @@ declare module "@mui/material/styles" {
     foreground: Palette["primary"];
     border: Palette["primary"];
     mutedForeground: Palette["primary"];
+    card: Palette["primary"];
   }
   interface PaletteOptions {
     accent?: PaletteColorOptions;
     foreground?: PaletteColorOptions;
     border?: PaletteColorOptions;
     mutedForeground?: PaletteColorOptions;
+    card?: PaletteColorOptions;
   }
 }
 

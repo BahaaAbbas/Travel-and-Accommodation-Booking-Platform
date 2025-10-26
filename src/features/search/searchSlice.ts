@@ -1,6 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { Hotel, SearchParams } from "@/types/search";
+import type { SearchParams } from "@/types/search";
 import type { Filters, SearchState } from "../types";
+import type { Hotel } from "@/types/HotelTypes";
 
 const initialState: SearchState = {
   hotels: [],

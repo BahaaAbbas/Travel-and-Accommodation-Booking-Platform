@@ -1,42 +1,4 @@
-export interface SearchCardProps {
-  hotel: {
-    hotelId: number;
-    hotelName: string;
-    cityName: string;
-    starRating: number;
-    roomPrice: number;
-    discount?: number;
-    roomType?: string;
-    amenities?: string[];
-    roomPhotoUrl: string;
-  };
-  onViewDetails?: (hotelId: number) => void;
-}
-
-export interface Amenity {
-  id: number;
-  name: string;
-  description: string;
-}
-
-export interface Hotel {
-  hotelId: number;
-  hotelName: string;
-  starRating: number;
-  latitude: number;
-  longitude: number;
-  roomPrice: number;
-  roomType: string;
-  cityName: string;
-  roomPhotoUrl: string;
-  discount: number;
-  amenities: Amenity[];
-  numberOfChildren: number;
-  numberOfAdults: number;
-  numberOfRooms: number;
-  checkInDate: string;
-  checkOutDate: string;
-}
+import type { Hotel, Amenity, Room } from "./HotelTypes";
 
 export interface SearchParams {
   query?: string;
@@ -45,4 +7,28 @@ export interface SearchParams {
   adults?: number;
   children?: number;
   numberOfRooms?: number;
+}
+
+export interface SearchCardProps {
+  hotel: Pick<
+    Hotel,
+    | "hotelId"
+    | "hotelName"
+    | "cityName"
+    | "starRating"
+    | "roomPrice"
+    | "discount"
+    | "imageUrl"
+  > & {
+    roomType?: string;
+    amenities?: string[];
+    roomPhotoUrl?: string;
+  };
+  onViewDetails?: (hotelId: number) => void;
+}
+
+export interface SearchWithCheckProps {
+  searchText: string;
+  setSearchText: React.Dispatch<React.SetStateAction<string>>;
+  onSearch?: (params: SearchParams) => void;
 }

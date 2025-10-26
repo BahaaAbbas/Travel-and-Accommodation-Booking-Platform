@@ -9,16 +9,36 @@ import {
   Checkbox,
   useTheme,
   Paper,
+  CircularProgress,
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilters } from "@/features/search/searchSlice";
 import { selectFilters } from "@/features/search/searchSelector";
 import type { Filters } from "@/features/types";
+import { useQuery } from "@tanstack/react-query";
+import searchService from "@/services/searchService";
+import type { Amenity, Room } from "@/types/HotelTypes";
 
 const SearchFilter: React.FC = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
   const filters = useSelector(selectFilters);
+
+  const { data: rooms, isLoading: roomsLoading } = useQuery<Room[], Error>({
+    queryKey: ["rooms"],
+    queryFn: searchService.getRooms,
+  });
+
+  const { data: amenities, isLoading: amenitiesLoading } = useQuery<
+    Amenity[],
+    Error
+  >({
+    queryKey: ["amenities"],
+    queryFn: searchService.getAmenities,
+  });
+
+  const roomTypesList = rooms ? [...new Set(rooms.map((r) => r.roomType))] : [];
+  const amenitiesList = amenities ? amenities.map((a) => a.name) : [];
 
   const filterBoxStyle = {
     p: 2,
@@ -43,6 +63,14 @@ const SearchFilter: React.FC = () => {
       : [...current, value];
     dispatch(setFilters({ ...filters, [key]: updated }));
   };
+
+  if (roomsLoading || amenitiesLoading) {
+    return (
+      <Box sx={{ display: "flex", justifyContent: "center", py: 4 }}>
+        <CircularProgress />
+      </Box>
+    );
+  }
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 2.5, mb: 2 }}>
@@ -106,13 +134,7 @@ const SearchFilter: React.FC = () => {
             Amenities
           </Typography>
           <FormGroup>
-            {[
-              "Free Wi-Fi",
-              "Swimming Pool",
-              "Gym",
-              "Spa",
-              "24/7 Reception",
-            ].map((amenity) => (
+            {amenitiesList.map((amenity) => (
               <FormControlLabel
                 key={amenity}
                 control={
@@ -137,14 +159,7 @@ const SearchFilter: React.FC = () => {
             Room Type
           </Typography>
           <FormGroup>
-            {[
-              "Ocean View Suite",
-              "Deluxe Room",
-              "Standard Room",
-              "Executive Suite",
-              "Family Room",
-              "Luxury Suite",
-            ].map((roomType) => (
+            {roomTypesList.map((roomType) => (
               <FormControlLabel
                 key={roomType}
                 control={

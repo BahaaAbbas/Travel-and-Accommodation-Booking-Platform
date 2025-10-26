@@ -1,6 +1,7 @@
 export const lightColors = {
   background: "hsl(0, 0%, 98%)",
   surface: "hsl(0, 0%, 100%)",
+  card: "hsl(0, 0%, 90%)",
   foreground: "hsl(220, 20%, 15%)",
   primary: "hsl(210, 100%, 45%)",
   secondary: "hsl(210, 20%, 92%)",
@@ -17,6 +18,7 @@ export const lightColors = {
 export const darkColors = {
   background: "hsl(220, 25%, 8%)",
   surface: "hsl(220, 22%, 12%)",
+  card: "hsl(220, 30%, 15%)",
   foreground: "hsl(210, 20%, 95%)",
   primary: "hsl(210, 100%, 55%)",
   secondary: "hsl(220, 20%, 18%)",

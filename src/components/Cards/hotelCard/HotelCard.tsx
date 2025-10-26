@@ -12,11 +12,10 @@ import {
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import type { HotelCardProps } from "@/types/homeTypes";
 import AppButton from "@/components/Buttons/AppButton";
-import { useNavigate } from "react-router-dom";
 
 const HotelCard: React.FC<HotelCardProps> = ({ hotel, onViewDetails }) => {
   const theme = useTheme();
-  const navigate = useNavigate();
+
   return (
     <Card
       sx={{
@@ -106,7 +105,7 @@ const HotelCard: React.FC<HotelCardProps> = ({ hotel, onViewDetails }) => {
             text="View Details"
             padding="8px 16px"
             bgColor={(theme) => theme.palette.primary.main}
-            onClick={() => navigate("/hotels")}
+            onClick={() => onViewDetails?.(hotel.id)}
           />
         </Box>
       </CardContent>

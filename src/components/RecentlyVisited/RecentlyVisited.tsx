@@ -1,11 +1,12 @@
 import { Box, Grid, Typography, useTheme } from "@mui/material";
 import { useRecentlyVisited } from "@/hooks/useHomeQueries";
 import HotelCard from "@/components/Cards/hotelCard/HotelCard";
-import type { Hotel, RecentlyVisitedResponse } from "@/types/homeTypes";
+import type { HotelPreview, RecentlyVisitedResponse } from "@/types/homeTypes";
+import { useNavigate } from "react-router-dom";
 
 const RecentlyVisited = () => {
   const theme = useTheme();
-
+  const navigate = useNavigate();
   const {
     data: recentlyVisited,
     isLoading: loadingVisited,
@@ -36,7 +37,7 @@ const RecentlyVisited = () => {
     );
   }
 
-  const mappedRecentlyVisited: Hotel[] =
+  const mappedRecentlyVisited: HotelPreview[] =
     recentlyVisited?.map((hotel: RecentlyVisitedResponse) => ({
       id: String(hotel.hotelId),
       name: hotel.hotelName,
@@ -66,7 +67,7 @@ const RecentlyVisited = () => {
           <Grid key={hotel.id} size={{ xs: 12, sm: 6, md: 4 }}>
             <HotelCard
               hotel={hotel}
-              onViewDetails={() => console.log(hotel.id)}
+              onViewDetails={(_id) => navigate(`/hotels/1`)}
             />
           </Grid>
         ))}

@@ -5,7 +5,7 @@ import type {
   RecentlyVisitedResponse,
   TrendingDestinationResponse,
 } from "@/types/homeTypes";
-import homeService from "@/services/homeService";
+import homeService, { getDestinationsCites } from "@/services/homeService";
 
 export const useFeaturedDeals = () =>
   useQuery<FeaturedDealResponse[]>({
@@ -24,3 +24,11 @@ export const useTrendingDestinations = () =>
     queryKey: ["trendingDestinations"],
     queryFn: homeService.getTrendingDestinations,
   });
+
+export const useDestinationById = (id: number) => {
+  return useQuery({
+    queryKey: ["destination", id],
+    queryFn: () => getDestinationsCites(id),
+    enabled: !!id,
+  });
+};

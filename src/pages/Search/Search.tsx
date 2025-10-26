@@ -20,8 +20,9 @@ import FindInPageIcon from "@mui/icons-material/FindInPage";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import { useAppDispatch } from "@/features/hooks";
 import { clearSearch } from "@/features/search/searchSlice";
-import type { Amenity } from "@/types/search";
+
 import { useNavigate } from "react-router-dom";
+import type { Amenity } from "@/types/HotelTypes";
 
 const Search = () => {
   const theme = useTheme();
@@ -111,7 +112,7 @@ const Search = () => {
 
   const handleViewDetails = (hotelId: number) => {
     console.log("View details for hotel:", hotelId);
-    navigate("/hotels");
+    navigate("/hotels/1");
   };
 
   return (

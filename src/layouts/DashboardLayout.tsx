@@ -96,11 +96,13 @@ const DashboardLayout: React.FC = () => {
         component="main"
         sx={{
           flexGrow: 1,
-          m: "0",
+          m: 0,
           pt: isMobile ? "45px" : 0,
           ml: !isMobile ? `${sidebarWidth}px` : 0,
-          transition: "margin-left 0.3s",
-          bgcolor: theme.palette.primary.main,
+          width: !isMobile ? `calc(100% - ${sidebarWidth}px)` : "100%",
+          transition: "all 0.3s ease",
+          // overflowX: "hidden", // prevent horizontal scrollbar
+          bgcolor: theme.palette.background.default,
         }}
       >
         <Outlet />

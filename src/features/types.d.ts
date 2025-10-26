@@ -1,3 +1,5 @@
+import type { Hotel, Room } from "@/types/search";
+
 export interface AuthState {
   token: string | null;
   userType: string | null;
@@ -6,6 +8,10 @@ export interface AuthState {
 export interface LayoutState {
   sidebarOpen: boolean;
   sidebarCollapsed: boolean;
+}
+
+interface CartState {
+  items: Room[];
 }
 
 export interface Filters {

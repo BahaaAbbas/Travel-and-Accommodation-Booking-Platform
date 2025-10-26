@@ -4,6 +4,7 @@ import type {
   TrendingDestinationResponse,
 } from "@/types/homeTypes";
 import apiClient from "./apiClient";
+import type { Destination } from "@/types/destinations";
 
 export const getFeaturedDeals = async (): Promise<FeaturedDealResponse[]> => {
   const res = await apiClient.get("/home/featured-deals");
@@ -24,10 +25,18 @@ export const getTrendingDestinations = async (): Promise<
   return res.data;
 };
 
+export const getDestinationsCites = async (
+  id: number
+): Promise<Destination> => {
+  const res = await apiClient.get(`/home/destinations/cities/${id}`);
+  return res.data;
+};
+
 const homeService = {
   getFeaturedDeals,
   getRecentlyVisited,
   getTrendingDestinations,
+  getDestinationsCites,
 };
 
 export default homeService;

@@ -9,6 +9,9 @@ import DashboardLayout from "@/layouts/DashboardLayout";
 import BookingForm from "@/components/ThemeTesting/Test";
 import Search from "@/pages/Search";
 import Hotels from "@/pages/Hotels";
+import Destinations from "@/pages/Destinations";
+import Cart from "@/pages/Cart/Cart";
+import Rooms from "@/pages/Rooms";
 
 const router = createBrowserRouter([
   {
@@ -34,7 +37,10 @@ const router = createBrowserRouter([
         children: [
           { path: "home", element: <Home /> },
           { path: "search", element: <Search /> },
-          { path: "hotels", element: <Hotels /> },
+          { path: "hotels/:hotelId", element: <Hotels /> },
+          { path: "rooms", element: <Rooms /> },
+          { path: "cart", element: <Cart /> },
+          { path: "destination/:cityId", element: <Destinations /> },
           { path: "settings", element: <div>Settings Page</div> },
         ],
       },

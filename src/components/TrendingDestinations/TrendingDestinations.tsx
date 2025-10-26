@@ -2,9 +2,11 @@ import { Box, Grid, Typography, useTheme } from "@mui/material";
 
 import { useTrendingDestinations } from "@/hooks/useHomeQueries";
 import TrendingCard from "@/components/Cards/trendingCard/TrendingCard";
+import { useNavigate } from "react-router-dom";
 
 const TrendingDestinations = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const {
     data: trendingDestinations,
@@ -42,14 +44,19 @@ const TrendingDestinations = () => {
         Trending Destinations
       </Typography>
 
-      <Grid container spacing={3} alignItems="stretch" justifyContent="center">
+      <Grid container spacing={3} justifyContent="center">
         {trendingDestinations?.map((dest) => (
           <Grid key={dest.cityId} size={{ xs: 12, sm: 6, md: 4 }}>
-            <TrendingCard
-              city={dest.cityName}
-              country={dest.countryName}
-              imageUrl={dest.thumbnailUrl}
-            />
+            <Box
+              onClick={() => navigate(`/destination/${dest.cityId}`)}
+              sx={{ cursor: "pointer" }}
+            >
+              <TrendingCard
+                city={dest.cityName}
+                country={dest.countryName}
+                imageUrl={dest.thumbnailUrl}
+              />
+            </Box>
           </Grid>
         ))}
       </Grid>
