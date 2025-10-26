@@ -28,3 +28,6 @@ notes.txt
 
 #env
 .env
+
+*storybook.log
+storybook-static

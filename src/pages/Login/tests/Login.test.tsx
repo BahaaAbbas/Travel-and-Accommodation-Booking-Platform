@@ -2,6 +2,11 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { vi } from "vitest";
 import { MemoryRouter } from "react-router-dom";
 import Login from "@/pages/Login";
+import { getTheme } from "@/theme/theme";
+import { ThemeProvider } from "@mui/material/styles";
+import type { ReactNode } from "react";
+import { Provider } from "react-redux";
+import { store } from "@/store/store";
 
 vi.mock("react-router-dom", async (importOriginal) => {
   const actual = await importOriginal<typeof import("react-router-dom")>();
@@ -11,7 +16,7 @@ vi.mock("react-router-dom", async (importOriginal) => {
   };
 });
 
-vi.mock("@/features/auth/hooks", () => ({
+vi.mock("@/features/hooks", () => ({
   useAppDispatch: () => vi.fn(),
 }));
 
@@ -19,13 +24,22 @@ vi.mock("@/context/ThemeContext", () => ({
   useThemeContext: () => ({ toggleTheme: vi.fn() }),
 }));
 
+const renderWithProviders = (
+  ui: ReactNode,
+  mode: "light" | "dark" = "light"
+) => {
+  return render(
+    <Provider store={store}>
+      <ThemeProvider theme={getTheme(mode)}>
+        <MemoryRouter>{ui}</MemoryRouter>
+      </ThemeProvider>
+    </Provider>
+  );
+};
+
 describe("Login Test", () => {
   it("shows success snackbar after successful ADMIN login", async () => {
-    render(
-      <MemoryRouter>
-        <Login />
-      </MemoryRouter>
-    );
+    renderWithProviders(<Login />);
 
     fireEvent.change(screen.getByLabelText(/name/i), {
       target: { value: "admin" },
@@ -33,7 +47,6 @@ describe("Login Test", () => {
     fireEvent.change(screen.getByLabelText(/password/i), {
       target: { value: "admin" },
     });
-
     fireEvent.click(screen.getByRole("button", { name: /sign in/i }));
 
     await waitFor(() =>
@@ -42,11 +55,7 @@ describe("Login Test", () => {
   });
 
   it("shows success snackbar after successful USER login", async () => {
-    render(
-      <MemoryRouter>
-        <Login />
-      </MemoryRouter>
-    );
+    renderWithProviders(<Login />);
 
     fireEvent.change(screen.getByLabelText(/name/i), {
       target: { value: "user" },
@@ -54,7 +63,6 @@ describe("Login Test", () => {
     fireEvent.change(screen.getByLabelText(/password/i), {
       target: { value: "user" },
     });
-
     fireEvent.click(screen.getByRole("button", { name: /sign in/i }));
 
     await waitFor(() =>
@@ -62,12 +70,8 @@ describe("Login Test", () => {
     );
   });
 
-  it("shows failed snackbar after unsuccessful  login", async () => {
-    render(
-      <MemoryRouter>
-        <Login />
-      </MemoryRouter>
-    );
+  it("shows failed snackbar after unsuccessful login", async () => {
+    renderWithProviders(<Login />);
 
     fireEvent.change(screen.getByLabelText(/name/i), {
       target: { value: "admin" },
@@ -75,7 +79,6 @@ describe("Login Test", () => {
     fireEvent.change(screen.getByLabelText(/password/i), {
       target: { value: "1234" },
     });
-
     fireEvent.click(screen.getByRole("button", { name: /sign in/i }));
 
     await waitFor(() =>
@@ -86,11 +89,7 @@ describe("Login Test", () => {
   });
 
   it("shows error when password less than 4 characters", async () => {
-    render(
-      <MemoryRouter>
-        <Login />
-      </MemoryRouter>
-    );
+    renderWithProviders(<Login />);
 
     fireEvent.change(screen.getByLabelText(/name/i), {
       target: { value: "anyuser" },
@@ -98,7 +97,6 @@ describe("Login Test", () => {
     fireEvent.change(screen.getByLabelText(/password/i), {
       target: { value: "12" },
     });
-
     fireEvent.click(screen.getByRole("button", { name: /sign in/i }));
 
     await waitFor(() =>
