@@ -11,6 +11,8 @@ export interface Room {
   roomType: string;
   capacityOfAdults: number;
   capacityOfChildren: number;
+  hotelName?: string;
+  hotelLocation?: string;
   roomAmenities?: Amenity[];
   price: number;
   availability: boolean;

@@ -175,7 +175,7 @@ const Cart = () => {
                   >
                     {item.roomType}{" "}
                     <Typography component="span" color="text.secondary">
-                      #{item.roomNumber}
+                      #{item.roomId}
                     </Typography>
                   </Typography>
                   <Typography
