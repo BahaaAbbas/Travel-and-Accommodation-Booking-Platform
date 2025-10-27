@@ -12,6 +12,8 @@ import Hotels from "@/pages/Hotels";
 import Destinations from "@/pages/Destinations";
 import Cart from "@/pages/Cart/Cart";
 import Rooms from "@/pages/Rooms";
+import Checkout from "@/pages/Checkout";
+import Confirmation from "@/pages/Confirmation";
 
 const router = createBrowserRouter([
   {
@@ -41,7 +43,8 @@ const router = createBrowserRouter([
           { path: "rooms", element: <Rooms /> },
           { path: "cart", element: <Cart /> },
           { path: "destination/:cityId", element: <Destinations /> },
-          { path: "settings", element: <div>Settings Page</div> },
+          { path: "checkout", element: <Checkout /> },
+          { path: "confirmation", element: <Confirmation /> },
         ],
       },
     ],
