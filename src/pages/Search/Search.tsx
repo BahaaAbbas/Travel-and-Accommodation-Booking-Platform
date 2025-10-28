@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import SearchCard from "@/components/Cards/searchCard";
 import SearchFilter from "@/components/SearchFilters";
 import SearchWithCheck from "@/components/Search/SearchWithCheck";
@@ -21,24 +22,36 @@ import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import { useAppDispatch } from "@/features/hooks";
 import { clearSearch } from "@/features/search/searchSlice";
 
-import { useNavigate } from "react-router-dom";
 import type { Amenity } from "@/types/HotelTypes";
 
 const Search = () => {
   const theme = useTheme();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [searchText, setSearchText] = useState("");
   const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(clearSearch());
-    searchHotels({});
-  }, [dispatch]);
+
   const {
     hotels,
     searchHotels,
     isAllHotelsLoading: isLoading,
     isAllHotelsError: isError,
   } = useSearchQueries();
+
+  useEffect(() => {
+    const queryParam = searchParams.get("query");
+    const locationParam = searchParams.get("location");
+
+    const searchTerm = queryParam || locationParam;
+
+    if (searchTerm) {
+      setSearchText(searchTerm);
+      searchHotels({ query: searchTerm });
+    } else {
+      dispatch(clearSearch());
+      searchHotels({});
+    }
+  }, [searchParams]);
 
   const filters = useSelector(selectFilters);
 

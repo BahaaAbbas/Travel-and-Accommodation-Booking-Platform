@@ -169,12 +169,6 @@ const AvailableRooms: React.FC<AvailableRoomsProps> = ({
                           boxShadow: theme.shadows[1],
                           letterSpacing: 0.1,
                           transition: "background .2s",
-                          ":hover": {
-                            background:
-                              theme.palette.mode === "dark"
-                                ? theme.palette.secondary.dark
-                                : theme.palette.secondary.light,
-                          },
                         }}
                       />
                     ))}

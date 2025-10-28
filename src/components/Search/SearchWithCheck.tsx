@@ -47,13 +47,17 @@ const SearchWithCheck: React.FC<SearchWithCheckProps> = ({
   const lastSearchedRef = useRef<string>("");
 
   useEffect(() => {
-    if (
-      debouncedSearch.trim() !== "" &&
-      debouncedSearch.trim() !== lastSearchedRef.current
-    ) {
-      lastSearchedRef.current = debouncedSearch.trim();
+    const trimmedSearch = debouncedSearch.trim();
 
-      searchHotels({ query: debouncedSearch.trim() });
+    if (trimmedSearch === "" && lastSearchedRef.current !== "") {
+      lastSearchedRef.current = "";
+      searchHotels({ query: "" });
+    } else if (
+      trimmedSearch !== "" &&
+      trimmedSearch !== lastSearchedRef.current
+    ) {
+      lastSearchedRef.current = trimmedSearch;
+      searchHotels({ query: trimmedSearch });
     }
   }, [debouncedSearch, searchHotels]);
 
@@ -157,6 +161,7 @@ const SearchWithCheck: React.FC<SearchWithCheckProps> = ({
                     }}
                     onClick={() => {
                       setSearchText("");
+                      lastSearchedRef.current = "";
                       searchHotels({ query: "" });
                     }}
                   />

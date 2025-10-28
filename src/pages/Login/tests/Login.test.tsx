@@ -37,7 +37,7 @@ const renderWithProviders = (
   );
 };
 
-describe("Login Test", () => {
+describe("Login Test Component", () => {
   it("shows success snackbar after successful ADMIN login", async () => {
     renderWithProviders(<Login />);
 

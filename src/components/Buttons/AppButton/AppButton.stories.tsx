@@ -4,7 +4,7 @@ import { ThemeProvider, CssBaseline } from "@mui/material";
 import { getTheme } from "@/theme/theme";
 
 const meta: Meta<typeof AppButton> = {
-  title: "Components/AppButton",
+  title: "Components/Buttons/AppButton",
   component: AppButton,
   parameters: {
     layout: "centered",
