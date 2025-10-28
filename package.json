@@ -25,6 +25,8 @@
     "axios": "^1.12.2",
     "dayjs": "^1.11.18",
     "formik": "^2.4.6",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.3",
     "jwt-decode": "^4.0.0",
     "mapbox-gl": "^3.15.0",
     "maplibre-gl": "^5.9.0",
