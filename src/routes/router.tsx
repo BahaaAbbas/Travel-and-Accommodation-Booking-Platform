@@ -14,6 +14,11 @@ import Cart from "@/pages/Cart/Cart";
 import Rooms from "@/pages/Rooms";
 import Checkout from "@/pages/Checkout";
 import Confirmation from "@/pages/Confirmation";
+import Admin from "@/pages/Admin";
+import {
+  ProtectedCartRoute,
+  ProtectedConfirmationRoute,
+} from "@/components/common/CheckerRoutes";
 
 const router = createBrowserRouter([
   {
@@ -43,8 +48,17 @@ const router = createBrowserRouter([
           { path: "rooms", element: <Rooms /> },
           { path: "cart", element: <Cart /> },
           { path: "destination/:cityId", element: <Destinations /> },
-          { path: "checkout", element: <Checkout /> },
-          { path: "confirmation", element: <Confirmation /> },
+
+          // { path: "checkout", element: <Checkout /> },
+          // { path: "confirmation", element: <Confirmation /> },
+          {
+            element: <ProtectedCartRoute />,
+            children: [{ path: "checkout", element: <Checkout /> }],
+          },
+          {
+            element: <ProtectedConfirmationRoute />,
+            children: [{ path: "confirmation", element: <Confirmation /> }],
+          },
         ],
       },
     ],
@@ -55,7 +69,7 @@ const router = createBrowserRouter([
     children: [
       {
         element: <DashboardLayout />,
-        children: [{ path: "admin", element: <div>Admin Panel</div> }],
+        children: [{ path: "admin", element: <Admin /> }],
       },
     ],
   },

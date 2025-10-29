@@ -12,9 +12,12 @@ import {
 } from "@mui/material";
 import { useFormik } from "formik";
 import { checkoutValidationSchema } from "@/validation/CheckoutValidation";
+import { useAppSelector } from "@/features/hooks";
+import { selectCartItems } from "@/features/cart/cartSelectors";
 
 const Checkout: React.FC = () => {
   const navigate = useNavigate();
+  const cartItems = useAppSelector(selectCartItems);
 
   const formik = useFormik({
     initialValues: {
@@ -31,7 +34,11 @@ const Checkout: React.FC = () => {
     validationSchema: checkoutValidationSchema,
     onSubmit: (values) => {
       console.log(values);
-      navigate("/confirmation", { state: { confirmInfo: values } });
+      const cartSnapshot = [...cartItems];
+
+      navigate("/confirmation", {
+        state: { confirmInfo: values, cartSnapshot },
+      });
     },
   });
 
