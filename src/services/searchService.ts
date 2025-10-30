@@ -1,4 +1,4 @@
-import type { SearchParams } from "@/types/search";
+import type { City, SearchParams } from "@/types/search";
 import apiClient from "./apiClient";
 import type { Amenity, Hotel, Room } from "@/types/HotelTypes";
 
@@ -31,11 +31,17 @@ export const getRooms = async (): Promise<Room[]> => {
   return rooms;
 };
 
+export const getCities = async (): Promise<City[]> => {
+  const res = await apiClient.get("/search-results/amenities");
+  return res.data;
+};
+
 const searchService = {
   getSearchedHotels,
   getHotels,
   getAmenities,
   getRooms,
+  getCities,
 };
 
 export default searchService;
