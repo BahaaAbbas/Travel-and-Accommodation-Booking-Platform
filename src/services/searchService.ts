@@ -19,6 +19,11 @@ export const getHotelsOnly = async (): Promise<Hotel[]> => {
   return res.data;
 };
 
+export const getRoomsOnly = async (): Promise<Room[]> => {
+  const res = await apiClient.get("/rooms/only");
+  return res.data;
+};
+
 export const getAmenities = async (): Promise<Amenity[]> => {
   const res = await apiClient.get("/search-results/amenities");
   return res.data;
@@ -48,6 +53,7 @@ const searchService = {
   getAmenities,
   getRooms,
   getCities,
+  getRoomsOnly,
 };
 
 export default searchService;
