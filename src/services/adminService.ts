@@ -1,6 +1,7 @@
 import type { City } from "@/types/search";
 import apiClient from "./apiClient";
 import type { Hotel, Room } from "@/types/HotelTypes";
+import type { Stats } from "@/types/statsTypes";
 
 export const putCity = async (
   id: number,
@@ -56,6 +57,11 @@ export const postRoom = async (data: Omit<Room, "id">): Promise<Room[]> => {
   return res.data;
 };
 
+export const getStats = async (): Promise<Stats> => {
+  const res = await apiClient.get("/stats");
+  return res.data;
+};
+
 const adminService = {
   putCity,
   deleteCity,
@@ -66,6 +72,7 @@ const adminService = {
   putRoom,
   deleteRoom,
   postRoom,
+  getStats,
 };
 
 export default adminService;
