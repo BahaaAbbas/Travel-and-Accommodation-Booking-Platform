@@ -17,9 +17,14 @@ vi.mock("react-router-dom", async (importOriginal) => {
   };
 });
 
-vi.mock("@/features/hooks", () => ({
-  useAppDispatch: () => vi.fn(),
-}));
+vi.mock("@/features/hooks", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@/features/hooks")>();
+  return {
+    ...actual,
+    useAppSelector: vi.fn().mockReturnValue([]),
+    useAppDispatch: vi.fn(),
+  };
+});
 
 vi.mock("@/context/ThemeContext", () => ({
   useThemeContext: () => ({ toggleTheme: vi.fn() }),

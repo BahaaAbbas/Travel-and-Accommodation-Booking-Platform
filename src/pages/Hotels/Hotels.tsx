@@ -2,7 +2,7 @@ import AboutHotel from "@/components/AboutHotel";
 import AvailableRooms from "@/components/AvailableRooms";
 
 import HotelMap from "@/components/HotelMap";
-import HotelSlider from "@/components/Slider/HotelSlider";
+import HotelSlider from "@/components/HotelSlider";
 import hotelService from "@/services/hotelService";
 import {
   Box,

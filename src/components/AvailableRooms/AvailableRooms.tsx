@@ -162,10 +162,7 @@ const AvailableRooms: React.FC<AvailableRoomsProps> = ({
                                   theme.palette.secondary.main,
                                   theme.palette.primary.main,
                                 ][idx % 3],
-                          color:
-                            theme.palette.mode === "dark"
-                              ? "white"
-                              : theme.palette.primary.contrastText,
+                          color: theme.palette.text.primary,
                           boxShadow: theme.shadows[1],
                           letterSpacing: 0.1,
                           transition: "background .2s",

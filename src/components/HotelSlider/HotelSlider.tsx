@@ -43,7 +43,6 @@ const HotelSlider: React.FC<HotelSliderProps> = ({ images }) => {
         </Fade>
       ))}
 
-      {/* Left arrow */}
       <IconButton
         onClick={handlePrev}
         sx={{
@@ -59,7 +58,6 @@ const HotelSlider: React.FC<HotelSliderProps> = ({ images }) => {
         <ArrowBackIosNew />
       </IconButton>
 
-      {/* Right arrow */}
       <IconButton
         onClick={handleNext}
         sx={{
@@ -75,7 +73,6 @@ const HotelSlider: React.FC<HotelSliderProps> = ({ images }) => {
         <ArrowForwardIos />
       </IconButton>
 
-      {/* Photo count */}
       <Box
         sx={{
           position: "absolute",

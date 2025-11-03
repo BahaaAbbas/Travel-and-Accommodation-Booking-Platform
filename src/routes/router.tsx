@@ -6,7 +6,6 @@ import RootRedirect from "@/components/common/RootRedirect";
 import UnAuthorized from "@/pages/UnAuthorized";
 import Home from "@/pages/Home";
 import DashboardLayout from "@/layouts/DashboardLayout";
-import BookingForm from "@/components/ThemeTesting/Test";
 import Search from "@/pages/Search";
 import Hotels from "@/pages/Hotels";
 import Destinations from "@/pages/Destinations";
@@ -28,13 +27,6 @@ const router = createBrowserRouter([
   },
   { path: "login", element: <Login /> },
   { path: "unauthorized", element: <UnAuthorized /> },
-  {
-    element: <DashboardLayout />,
-    children: [
-      { path: "test", element: <Home /> },
-      { path: "test1", element: <BookingForm /> },
-    ],
-  },
 
   {
     element: <ProtectedRoute allowedRoles={["Admin", "User"]} />,
