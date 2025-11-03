@@ -103,3 +103,10 @@ export interface CartSummaryProps {
   cart: CartItem[];
   hotel: HotelCart;
 }
+
+
+export interface HotelGroup {
+  hotelName: string;
+  hotelLocation?: string;
+  rooms: Room[];
+}

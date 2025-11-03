@@ -1,4 +1,4 @@
-import type { SearchParams } from "@/types/search";
+import type { City, SearchParams } from "@/types/search";
 import apiClient from "./apiClient";
 import type { Amenity, Hotel, Room } from "@/types/HotelTypes";
 
@@ -11,6 +11,16 @@ export const getSearchedHotels = async (
 
 export const getHotels = async (): Promise<Hotel[]> => {
   const res = await apiClient.get("/home/search/hotels");
+  return res.data;
+};
+
+export const getHotelsOnly = async (): Promise<Hotel[]> => {
+  const res = await apiClient.get("/holes/only");
+  return res.data;
+};
+
+export const getRoomsOnly = async (): Promise<Room[]> => {
+  const res = await apiClient.get("/rooms/only");
   return res.data;
 };
 
@@ -31,11 +41,19 @@ export const getRooms = async (): Promise<Room[]> => {
   return rooms;
 };
 
+export const getCities = async (): Promise<City[]> => {
+  const res = await apiClient.get("/cities");
+  return res.data;
+};
+
 const searchService = {
   getSearchedHotels,
   getHotels,
+  getHotelsOnly,
   getAmenities,
   getRooms,
+  getCities,
+  getRoomsOnly,
 };
 
 export default searchService;

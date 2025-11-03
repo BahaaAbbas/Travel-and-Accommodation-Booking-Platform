@@ -1,3 +1,4 @@
+import type { StringSchema } from "yup";
 import type { Hotel, Amenity, Room } from "./HotelTypes";
 
 export interface SearchParams {
@@ -31,4 +32,10 @@ export interface SearchWithCheckProps {
   searchText: string;
   setSearchText: React.Dispatch<React.SetStateAction<string>>;
   onSearch?: (params: SearchParams) => void;
+}
+
+export interface City {
+  id: number;
+  name: string;
+  description: string;
 }

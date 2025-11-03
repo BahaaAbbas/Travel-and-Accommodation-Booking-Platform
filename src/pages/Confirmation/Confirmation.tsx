@@ -16,11 +16,12 @@ import {
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { useLocation, useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
-import { useAppSelector } from "@/features/hooks";
-import { selectCartItems } from "@/features/cart/cartSelectors";
-import type { Room } from "@/types/HotelTypes";
+import { useAppDispatch } from "@/features/hooks";
+
+import type { HotelGroup, Room } from "@/types/HotelTypes";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import { clearCart } from "@/features/cart/cartSlice";
 
 const generateConfirmationNumber = () => {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -30,29 +31,21 @@ const generateConfirmationNumber = () => {
   ).join("");
 };
 
-interface HotelGroup {
-  hotelName: string;
-  hotelLocation?: string;
-  rooms: Room[];
-}
-
 const Confirmation: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { confirmInfo } = location.state || {};
-  const cart = useAppSelector(selectCartItems);
+  const { confirmInfo, cartSnapshot } = location.state || {};
+  const cart = cartSnapshot;
   const theme = useTheme();
-
-  useEffect(() => {
-    if (!confirmInfo || cart.length === 0) {
-      navigate("/home", { replace: true });
-    }
-  }, [confirmInfo, cart, navigate]);
-
+  const dispatch = useAppDispatch();
   const confirmationNumber = useMemo(generateConfirmationNumber, []);
 
+  useEffect(() => {
+    dispatch(clearCart());
+  }, []);
+
   const totalCost = useMemo(
-    () => cart.reduce((sum, room) => sum + room.price, 0),
+    () => cart.reduce((sum: number, room: Room) => sum + room.price, 0),
     [cart]
   );
 
@@ -60,7 +53,7 @@ const Confirmation: React.FC = () => {
     const groups: HotelGroup[] = [];
     const hotelMap = new Map<string, Room[]>();
 
-    cart.forEach((room) => {
+    cart.forEach((room: Room) => {
       const hotelKey = room.hotelName || "Other Hotels";
       if (!hotelMap.has(hotelKey)) {
         hotelMap.set(hotelKey, []);
