@@ -8,18 +8,19 @@
 ## 📋 Table of Contents
 
 * [Overview](#overview)
-* [Technologies & Dependencies](#technologies--dependencies)
+* [Technologies & Dependencies](#technologies-dependencies)
 * [Demo](#demo)
 * [Login Information](#login-information)
 * [Public Pages](#public-pages)
 * [User Pages](#user-pages)
-* [Admin Pages](#admin-pages)
+* [Admin Pages](#admin-panel)
 * [Starting Point](#starting-point)
 * [Project Scrum Board](#project-scrum-board)
 * [Scripts](#scripts)
 * [Getting Started](#getting-started)
 * [Contact](#contact)
 * [Acknowledgement](#acknowledgement)
+
 
 ---
 
@@ -69,7 +70,7 @@ It provides a complete end-to-end solution for managing hotels, rooms, bookings,
 ## 🎥 Demo
 
 📽️ Watch the demo video here:
-[**TravelBook Demo**]()
+[**TravelBook Demo**](https://drive.google.com/file/d/1ZB8NOVaaYNrOlkLEpjvMHw3e36a2SUNZ/view?usp=sharing)
 
 ---
 
