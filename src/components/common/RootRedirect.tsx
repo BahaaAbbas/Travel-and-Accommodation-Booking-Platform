@@ -33,6 +33,7 @@ const RootRedirect = () => {
     } catch (error) {
       localStorage.removeItem("token");
       localStorage.removeItem("userType");
+      console.error(error);
       navigate("/login", { replace: true });
     }
   }, [token, userType, navigate]);

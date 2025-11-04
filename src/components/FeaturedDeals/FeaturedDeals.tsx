@@ -66,7 +66,7 @@ const FeaturedDeals = () => {
           <Grid key={hotel.id} size={{ xs: 12, sm: 6, md: 4 }}>
             <HotelCard
               hotel={hotel}
-              onViewDetails={(_id) => navigate(`/hotels/1`)}
+              onViewDetails={() => navigate(`/hotels/1`)}
             />
           </Grid>
         ))}

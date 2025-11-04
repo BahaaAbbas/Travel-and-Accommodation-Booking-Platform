@@ -1,5 +1,4 @@
-import type { StringSchema } from "yup";
-import type { Hotel, Amenity, Room } from "./HotelTypes";
+import type { Hotel } from "./HotelTypes";
 
 export interface SearchParams {
   query?: string;
