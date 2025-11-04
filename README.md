@@ -55,7 +55,7 @@ It provides a complete end-to-end solution for managing hotels, rooms, bookings,
 | **Tooling**            | Vite, Storybook, Vitest                      |
 | **UI / UX**            | Material UI (MUI), Emotion Styled Components |
 | **Theme Support**      | 🌙 Dark / ☀️ Light theme                    |
-| **State Management**   | Redux Toolkit, redux-persist                 |
+| **State Management**   | Redux Toolkit                                |
 | **Data Fetching**      | React Query (TanStack)                       |
 | **Routing**            | React Router DOM v7                          |
 | **Forms & Validation** | Formik + Yup                                 |
