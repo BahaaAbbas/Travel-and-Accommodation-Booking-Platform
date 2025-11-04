@@ -39,7 +39,7 @@ It provides a complete end-to-end solution for managing hotels, rooms, bookings,
 * **React Query** for efficient API data fetching and caching
 * **Formik + Yup** for robust form handling and validation
 * **JWT Authentication** for secure access
-* **Leaflet / Mapbox** maps integration for location-based features
+* **Mapbox** maps integration for location-based features
 * **Axios** for HTTP requests
 * **React Router DOM v7** for dynamic routing
 * **Day.js** for date/time handling
@@ -61,7 +61,7 @@ It provides a complete end-to-end solution for managing hotels, rooms, bookings,
 | **Forms & Validation** | Formik + Yup                                 |
 | **Maps**               | Mapbox                                       |
 | **Auth**               | JWT + js-cookie                              |
-| **Testing**            | Vitest, Testing Library                      |
+| **Testing**            | Vitest, MSW                                  |
 | **PDF/Canvas Tools**   | jsPDF, html2canvas                           |
 | **Date Handling**      | Day.js                                       |
 
