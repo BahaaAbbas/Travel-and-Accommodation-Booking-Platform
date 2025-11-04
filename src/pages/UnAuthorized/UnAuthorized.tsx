@@ -47,12 +47,7 @@ const UnAuthorized = () => {
           maxWidth: 400,
         }}
       >
-        <Box
-          component="img"
-          src={Logo}
-          alt="Logo"
-          sx={{ width: 120, height: 120, mb: 1 }}
-        />
+        <Box component="img" src={Logo} alt="Logo" sx={{ width: 150, mb: 1 }} />
 
         <Typography variant="h1" fontWeight="bold" sx={{ color: primary.main }}>
           401

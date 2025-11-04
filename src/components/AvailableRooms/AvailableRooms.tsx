@@ -93,7 +93,7 @@ const AvailableRooms: React.FC<AvailableRoomsProps> = ({
                 image={room.roomPhotoUrl}
                 alt={room.roomType}
                 sx={{
-                  width: 200,
+                  width: { xs: "25%" },
                   height: 150,
                   objectFit: "cover",
                   borderRadius: 2,
@@ -279,6 +279,7 @@ const AvailableRooms: React.FC<AvailableRoomsProps> = ({
           </Typography>
         )}
       </Stack>
+
       <Snackbar
         open={snackbar.open}
         autoHideDuration={1800}
