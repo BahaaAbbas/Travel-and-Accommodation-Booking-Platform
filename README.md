@@ -1,4 +1,3 @@
-
 # 🧳 **TravelBook**
 
 *A modern Travel and Accommodation Booking Platform built with React, TypeScript, and Vite.*
@@ -21,9 +20,9 @@
 * [Contact](#contact)
 * [Acknowledgement](#acknowledgement)
 
-
 ---
 
+<a id="overview"></a>
 ## 🚀 Overview
 
 **TravelBook** (*Travel-and-Accommodation-Booking-Platform*) is a modern, private React-based booking application designed for performance, scalability, and a seamless developer experience.
@@ -47,6 +46,7 @@ It provides a complete end-to-end solution for managing hotels, rooms, bookings,
 
 ---
 
+<a id="technologies-dependencies"></a>
 ## 🧠 Technologies & Dependencies
 
 | Category               | Key Libraries                                |
@@ -67,6 +67,7 @@ It provides a complete end-to-end solution for managing hotels, rooms, bookings,
 
 ---
 
+<a id="demo"></a>
 ## 🎥 Demo
 
 📽️ Watch the demo video here:
@@ -74,6 +75,7 @@ It provides a complete end-to-end solution for managing hotels, rooms, bookings,
 
 ---
 
+<a id="login-information"></a>
 ## 🔐 Login Information
 
 | Role      | Username | Password |
@@ -83,85 +85,87 @@ It provides a complete end-to-end solution for managing hotels, rooms, bookings,
 
 ---
 
+<a id="public-pages"></a>
 ## 🌐 Public Pages
 
-* **Login Page**
-![Login Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/1-LoginDark.png?raw=true)
+* **Login Page**  
+![Login Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/1-LoginDark.png?raw=true)  
 ![Login Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/1-LoginLight.png?raw=true)
 
-  
-* **Unauthorized Access**
+* **Unauthorized Access**  
 ![Unauthorized Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/12-unauthorizedDark.png?raw=true)
 
-* **Not Found**
+* **Not Found**  
 ![Not Found Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/11-NotFoundDark.png?raw=true)
 
-
 ---
 
+<a id="user-pages"></a>
 ## 👤 User Pages
 
-* **Home Page**
-![Home Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/2-HomeUserDark.png?raw=true)
-![Home Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/2-HomeUserLight.png?raw=true)
+* **Home Page**  
+![Home Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/2-HomeUserDark.png?raw=true)  
+![Home Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/2-HomeUserLight.png?raw=true)  
 ![Home Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/2-HomeUserDarkCollapseMidScreen.png?raw=true)
 
-* **Search Page**
-![Search Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/5-SearchDark.png?raw=true)
+* **Search Page**  
+![Search Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/5-SearchDark.png?raw=true)  
 ![Search Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/5-SearchLight.png?raw=true)
-  
 
-* **Hotel Details**
-![Hotel Details Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/3-HotelDetailsDark.png?raw=true)
+* **Hotel Details**  
+![Hotel Details Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/3-HotelDetailsDark.png?raw=true)  
 ![Hotel Details Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/3-HotelDetailsLight.png?raw=true)
 
-* **Rooms Page**
-![Rooms Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/6-RoomsDark.png?raw=true)
+* **Rooms Page**  
+![Rooms Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/6-RoomsDark.png?raw=true)  
 ![Rooms Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/6-RoomsLight.png?raw=true)
 
-* **Destination Page**
-![Destination Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/4-DestinationDark.png?raw=true)
+* **Destination Page**  
+![Destination Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/4-DestinationDark.png?raw=true)  
 ![Destination Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/4-DestinationLight.png?raw=true)
 
-* **Cart Page**
-![Cart Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/7-CartDark.png?raw=true)
+* **Cart Page**  
+![Cart Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/7-CartDark.png?raw=true)  
 ![Cart Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/7-CartLight.png?raw=true)
 
-* **Checkout Page**
-![Checkout Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/8-CheckoutDark.png?raw=true)
+* **Checkout Page**  
+![Checkout Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/8-CheckoutDark.png?raw=true)  
 ![Checkout Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/8-CheckoutLight.png?raw=true)
-  
-* **Booking Confirmation Page**
-![Booking Confirmation Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/9-BookingDark.png?raw=true)
-![Booking Confirmation Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/9-BookingLight.png?raw=true)  
+
+* **Booking Confirmation Page**  
+![Booking Confirmation Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/9-BookingDark.png?raw=true)  
+![Booking Confirmation Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/9-BookingLight.png?raw=true)
 
 ---
 
+<a id="admin-panel"></a>
 ## 🛠️ Admin Panel
 
-* **Cities Management**
-![Cities Management Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/10-AdminCitiesDark.png?raw=true)
-![Cities Management Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/10-AdminCitiesDarkDelete.png?raw=true)
+* **Cities Management**  
+![Cities Management Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/10-AdminCitiesDark.png?raw=true)  
+![Cities Management Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/10-AdminCitiesDarkDelete.png?raw=true)  
 ![Cities Management Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/10-AdminCitiesDarkEdit.png?raw=true)
 
-* **Hotels Management**
+* **Hotels Management**  
 ![Hotels Management Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/10-AdminHotelsDark.png?raw=true)
 
-* **Hotel Rooms Management**
-![Hotel Rooms Management Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/10-AdminRoomsDark.png?raw=true)
+* **Hotel Rooms Management**  
+![Hotel Rooms Management Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/10-AdminRoomsDark.png?raw=true)  
 ![Hotel Rooms Management Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/10-AdminRoomsDarkNEW.png?raw=true)
 
-* **Stats Dashboard**
+* **Stats Dashboard**  
 ![Stats Dashboard Page](https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform/blob/main/src/assets/READMEIMAGES/10-AdminSTATSDark.png?raw=true)
 
 ---
 
+<a id="starting-point"></a>
 ## 🧩 Starting Point
 
 The initial UX layout was designed in [**Excalidraw**](https://excalidraw.com/#json=E95OwtS_yCQIeY6z2C1y2,hVOE2l7QvJXilwsDqrIqDg).
 
 ---
 
+<a id="project-scrum-board"></a>
 ## 📊 Project Scrum Board
 
 Project managed using **Agile Scrum** methodology — tracked via **Trello** for sprint and task management.
@@ -170,6 +174,7 @@ Project managed using **Agile Scrum** methodology — tracked via **Trello** for
 
 ---
 
+<a id="scripts"></a>
 ## 🧾 Scripts
 
 | Command                   | Description                              |
@@ -182,6 +187,7 @@ Project managed using **Agile Scrum** methodology — tracked via **Trello** for
 
 ---
 
+<a id="getting-started"></a>
 ## ⚙️ Getting Started
 
 ### 1️⃣ Clone the Frontend Repository
@@ -189,7 +195,7 @@ Project managed using **Agile Scrum** methodology — tracked via **Trello** for
 ```bash
 git clone https://github.com/BahaaAbbas/Travel-and-Accommodation-Booking-Platform
 cd Travel-and-Accommodation-Booking-Platform
-```
+````
 
 ### 2️⃣ Install Dependencies
 
@@ -222,6 +228,8 @@ VITE_MAPTILER_API_KEY="ADD MAPTILER API KEY HERE"
 
 ---
 
+<a id="contact"></a>
+
 ## 📫 Contact
 
 **Author:** Bahaa Abbas
@@ -234,8 +242,11 @@ VITE_MAPTILER_API_KEY="ADD MAPTILER API KEY HERE"
 
 ---
 
+<a id="acknowledgement"></a>
+
 ## 🙏 Acknowledgement
 
 A heartfelt thank you to **Foothill Technology Solutions** for the opportunity to participate in this internship cycle.
 Your guidance and mentorship were instrumental in shaping the **TravelBook** project.
+
 
